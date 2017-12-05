@@ -4,10 +4,6 @@ export default {
         top: {
             type: [String],
             default: 'auto'
-        },
-        zIndex: {
-            type: Number,
-            default: 10
         }
     },
     data() {
@@ -58,7 +54,7 @@ export default {
     },
     render(h) {
         return (
-            <div class="sticky" style={{top: this.top, bottom: this.bottom, zIndex: this.zIndex}}>
+            <div class="sticky" style={{top: this.top, bottom: this.bottom}}>
                 {this.$slots.default}
                 <div style={{clear: 'both', height: '1px'}}></div>
             </div>
@@ -73,7 +69,6 @@ export default {
             let child = this.$el.firstElementChild;
             if (!stickySupport && child) {
                 this.child = child;
-                child.style.zIndex = this.zIndex;
                 this.stickyHeight = parseFloat(computedStyle.height, 10);
                 this.$el.style.position = 'static';
                 this.$el.style.height = computedStyle.height;
